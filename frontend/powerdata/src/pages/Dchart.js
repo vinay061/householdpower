@@ -3,18 +3,27 @@ import { Line } from 'react-chartjs-2'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-export default function Chartdata() {
+export default function Dchart() {
     const [tempData, setTempData] = useState([])
     const [chartData, setChartData] = useState({})
-    const [xData, setxData] = useState([])
-    let xAxis = []
-    let yAxis = []
-    useEffect(() => {
+    const [noData, setNoData] = useState([])
+    const [xAxis, setxAxis] = useState([])
+    const [yAxis, setyAxis] = useState([])
+
+    useEffect(()=>{
         axios.get("http://localhost:5000/data")
              .then(res => {
+                 let xVal = []
+                 let yVal = []
                  setTempData(res.data)
-                 console.log(typeof(tempData))
-                 console.log(xAxis.length)
+                 tempData.forEach(function(value){
+                    xVal.push(value.Year)
+                    yVal.push(value.Glob)
+                 })
+                 setxAxis(xVal)
+                 setyAxis(yVal)
+                 console.log(`xAxis data: ${xAxis}`)
+                 console.log(`yAxis data: ${yAxis}`)
              })
               .catch(err => {
                  console.log(err)
@@ -22,20 +31,9 @@ export default function Chartdata() {
             chart()
     },[])
 
-    // const getData = () => {
-        
-    // }
-
     const chart = () => {
 
-        tempData.forEach(function(value){
-            xAxis.push(value.Year)
-            yAxis.push(value.Glob)
-        })
-        console.log(`xAxis: ${xAxis}`)
-        console.log(`yAxis: ${yAxis}`)
-        console.log(`chartdata: ${chartData}`)
-        
+       
         if(xAxis.length > 0 && yAxis.length > 0){
             setChartData({
                 //labels: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
@@ -56,12 +54,12 @@ export default function Chartdata() {
         }
 
         else {
-            setChartData({
+            setNoData({
                 labels: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
                 //labels: xAxis,
                 datasets: [{
                     label: 'Global temp',
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: [12, 19, 3, 5, 2, 3, 100],
                     backGroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                     ],
@@ -75,26 +73,16 @@ export default function Chartdata() {
         }
     }
 
-   
-
-    return (
+    return(
         <div>
-            <p>Chart is displayed as follows</p>
-            <Line data={chartData}/>
-            {/* <p>{xAxis.length}</p> */}
-            {/* {
-                xAxis.length > 0 ?
-                <div>
-                    <Line data={chartData}/>
-                </div>
+            <p>Dchart is displayed below</p>
+            {
+                xAxis.length && yAxis.length > 0 ?
+                <Line data={chartData}/>
                 :
-                <div>
-                    <Line data={chartData}/>
-                </div>
-                
-            } */}
-   
-            
+                <Line data={noData}/>
+            }
         </div>
     )
+
 }

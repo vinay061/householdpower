@@ -15,7 +15,7 @@ export default function Tabledata() {
         await axios.get("http://localhost:5000/data")
                    .then(res => {
                        setTableData(res.data)
-                       console.log(res.data)
+                       //console.log(res.data)
                    })
     }
     return (
