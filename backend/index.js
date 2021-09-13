@@ -11,6 +11,7 @@ app.get('/data', (req,res) => {
     let sqlquery = 'SELECT * FROM temperature'
     connection.query(sqlquery, (error, results) => {
         if(error) throw error
+        //console.log(results)
         res.send(results)
         counter++
         console.log(`Database call ${counter} time`)

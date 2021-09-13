@@ -13,8 +13,8 @@ export default function Chartdata() {
         axios.get("http://localhost:5000/data")
              .then(res => {
                  setTempData(res.data)
-                 console.log(typeof(tempData))
-                 console.log(xAxis.length)
+                //  console.log(typeof(tempData))
+                //  console.log(xAxis.length)
              })
               .catch(err => {
                  console.log(err)
@@ -32,9 +32,9 @@ export default function Chartdata() {
             xAxis.push(value.Year)
             yAxis.push(value.Glob)
         })
-        console.log(`xAxis: ${xAxis}`)
-        console.log(`yAxis: ${yAxis}`)
-        console.log(`chartdata: ${chartData}`)
+        // console.log(`xAxis: ${xAxis}`)
+        // console.log(`yAxis: ${yAxis}`)
+        // console.log(`chartdata: ${chartData}`)
         
         if(xAxis.length > 0 && yAxis.length > 0){
             setChartData({

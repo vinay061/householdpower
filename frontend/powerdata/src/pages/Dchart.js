@@ -22,8 +22,8 @@ export default function Dchart() {
                  })
                  setxAxis(xVal)
                  setyAxis(yVal)
-                 console.log(`xAxis data: ${xAxis}`)
-                 console.log(`yAxis data: ${yAxis}`)
+                //  console.log(`xAxis data: ${xAxis}`)
+                //  console.log(`yAxis data: ${yAxis}`)
              })
               .catch(err => {
                  console.log(err)
