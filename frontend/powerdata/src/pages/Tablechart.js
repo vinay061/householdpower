@@ -3,19 +3,19 @@ import { Line } from 'react-chartjs-2'
 
 export default function Tablechart(props){
 
-    console.log(`In the child section: ${props}`)
+    //console.log(`In the child section: ${props}`)
     const chartvalues = props.data
-    console.log(chartvalues)
+    //console.log(chartvalues)
     const values = chartvalues.slice(0,100)
-    console.log(values)
+    //console.log(values)
     let year = []
     let temp = []
     values.forEach(elt =>{
         year.push(elt.Year)
         temp.push(elt.Glob)
     })
-    console.log(`Year data: ${year}`)
-    console.log(`Temp data: ${temp}`)
+    // console.log(`Year data: ${year}`)
+    // console.log(`Temp data: ${temp}`)
     
     
     return(

@@ -7,18 +7,24 @@ let counter = 0
 
 app.use(cors())
 
+app.get('/', (req,res) => {
+    res.send('Welcome to the Household Power Consumption Data Server. Click /data to see the results')
+})
+
+// api for data transfer 
 app.get('/data', (req,res) => {
-    let sqlquery = 'SELECT * FROM temperature'
+    // query to select data and limit to fetch first 200 records to reduce network load
+    let sqlquery = 'SELECT * FROM epower LIMIT 0, 200' 
     connection.query(sqlquery, (error, results) => {
         if(error) throw error
-        //console.log(results)
         res.send(results)
         counter++
+        //a counter to maintain the number of calls received to the server
         console.log(`Database call ${counter} time`)
-        console.log(typeof(results))
     })
 })
 
+// connection is established here
 app.listen(port, () => {
     console.log(`Listening on port: ${port} at http://localhost/${port}`)
     connection.connect((err) => {
