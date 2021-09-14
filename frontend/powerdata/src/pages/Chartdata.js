@@ -14,8 +14,6 @@ export default function Chartdata(props){
           date.push(elt.Date)   // array to maintain x axis values
           power.push(elt.Global_active_power) // array to maintain y axis values
     })
-    console.log(`Date data(chartdata): ${date}`)
-    console.log(`Power data(chartdata): ${power}`)
     
     
     return(
