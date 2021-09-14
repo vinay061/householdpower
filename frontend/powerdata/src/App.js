@@ -17,14 +17,10 @@ function App() {
               <Link to='/table'>Tabledata</Link>
             </li>
           </ul>
-           {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-
                <Route path='/table'>
                 <Tabledata/>
               </Route>
-           
-        </div>
+         </div>
       </Router>
     </div>
   );

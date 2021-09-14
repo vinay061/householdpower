@@ -2,13 +2,13 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 port = 5000
-const connection = require('./database')
+const connection = require('./database') // the connection details is in the database.js file
 let counter = 0
 
 app.use(cors())
 
 app.get('/', (req,res) => {
-    res.send('Welcome to the Household Power Consumption Data Server. Click /data to see the results')
+    res.send('Welcome to the Household Power Consumption Data Server. Type localhost:5000/data to see the results')
 })
 
 // api for data transfer 

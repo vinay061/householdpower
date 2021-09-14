@@ -7,7 +7,7 @@ export default function Chartdata(props){
     //assign the data received from Tabledata to chartValues
     const chartvalues = props.data
     //limiting the values using slice. Can be changed
-    const values = chartvalues.slice(0,3000)
+    const values = chartvalues.slice(0,1000)
     let date = []
     let power = []
     values.forEach(elt =>{

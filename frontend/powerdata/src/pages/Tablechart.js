@@ -1,7 +1,7 @@
 import React from "react";
 import { Line } from 'react-chartjs-2'
 
-//This function displays the chart between the time and voltage
+//This function displays the chart for the time and voltage
 export default function Tablechart(props){
 
     //assign the data received from Tabledata to chartValues
