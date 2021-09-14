@@ -3,30 +3,26 @@ import { Line } from 'react-chartjs-2'
 
 export default function Tablechart(props){
 
-    //console.log(`In the child section: ${props}`)
+    //assign the data received from Tabledata to a chartValues
     const chartvalues = props.data
-    //console.log(chartvalues)
-    const values = chartvalues.slice(0,100)
-    //console.log(values)
-    let year = []
-    let temp = []
+    //limiting the values using slice. Can be changed
+    const values = chartvalues.slice(0,200)
+    let time = []
+    let voltage = []
     values.forEach(elt =>{
-        year.push(elt.Year)
-        temp.push(elt.Glob)
+         time.push(elt.Time)   // array to maintain x axis values
+         voltage.push(elt.Voltage) // array to maintain y axis values
     })
-    // console.log(`Year data: ${year}`)
-    // console.log(`Temp data: ${temp}`)
-    
     
     return(
         <div>
-            <p>Chart of the table (child of table)</p>
+            <p>Chart to compare between Time and Voltage</p>
             <Line data={
                 {
-                    labels: year,
+                    labels: time,
                     datasets: [{
-                        label: 'Global temp',
-                        data: temp,
+                        label: 'Voltage',
+                        data: voltage,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -46,7 +42,8 @@ export default function Tablechart(props){
                         borderWidth: 1
                     }]
                 }
-            }/>
+            }
+            />
         </div>
     )
 }

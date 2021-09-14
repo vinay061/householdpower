@@ -13,6 +13,7 @@ export default function Tabledata() {
         getTableData()
     },[])
 
+    //function to get the data from the url and assign to the state variable setTableData
     async function getTableData(){
         await axios.get("http://localhost:5000/data")
                    .then(res => {
@@ -20,6 +21,8 @@ export default function Tabledata() {
                        //console.log(res.data)
                    })
     }
+
+    //console.log(tableData)
     return (
         <div>
             <p>Data displayed in table format</p>
@@ -27,10 +30,15 @@ export default function Tabledata() {
                 <thead>
                     <tr>
                         <th>Serial Number</th>
-                        <th>Year</th>
-                        <th>Temperature</th>
-                        <th>Nhem</th>
-                        <th>Shem</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Global Active Power</th>
+                        <th>Global Reactive Power</th>
+                        <th>Voltage</th>
+                        <th>Global Intensity</th>
+                        <th>Sub Metering 1</th>
+                        <th>Sub Metering 2</th>
+                        <th>Sub Metering 3</th>
                     </tr>
                 </thead>
                     <tbody className="hover">
@@ -39,10 +47,15 @@ export default function Tabledata() {
                                 return(
                                     <tr key={index}>
                                         <td>{index}</td>
-                                        <td>{value.Year}</td>
-                                        <td>{value.Glob}</td>
-                                        <td>{value.Shem}</td>
-                                        <td>{value.Nhem}</td>
+                                        <td>{value.Date}</td>
+                                        <td>{value.Time}</td>
+                                        <td>{value.Global_active_power}</td>
+                                        <td>{value.Global_reactive_power}</td>
+                                        <td>{value.Voltage}</td>
+                                        <td>{value.Global_intensity}</td>
+                                        <td>{value.Sub_metering_1}</td>
+                                        <td>{value.Sub_metering_2}</td>
+                                        <td>{value.Sub_metering_3}</td>
                                     </tr>
                                 )
                             })
@@ -50,7 +63,7 @@ export default function Tabledata() {
                     </tbody>
             </Table>
             <Tablechart data={tableData}/>
-            <Chartdata data={tableData}/>
+            <Chartdata data={tableData}/> 
         </div>
     )
 }

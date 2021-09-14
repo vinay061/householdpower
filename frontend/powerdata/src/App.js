@@ -3,8 +3,7 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Tabledata from './pages/Tabledata'
 import Chartdata from './pages/Chartdata'
-import Dchart from './pages/Dchart';
-import Format from './pages/Format';
+
 
 function App() {
   return (
@@ -19,12 +18,6 @@ function App() {
             <li className='about'>
               <Link to='/chart'>Chartdata</Link>
             </li>
-            <li>
-              <Link to='/dchart'>DChartdata</Link>
-            </li>
-            <li>
-              <Link to='/format'>Format</Link>
-            </li>
           </ul>
            {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -35,12 +28,6 @@ function App() {
               </Route>
               <Route path='/chart'>
                 <Chartdata/>
-              </Route>
-              <Route path='/dchart'>
-                <Dchart/>
-              </Route>
-              <Route path='/format'>
-                <Format/>
               </Route>
             </Switch>
         </div>

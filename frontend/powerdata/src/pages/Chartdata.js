@@ -6,27 +6,27 @@ export default function Chartdata(props){
     console.log(`In the chartdata child section: ${props}`)
     const chartvalues = props.data
     console.log(chartvalues)
-    const values = chartvalues.slice(0,100)
+    const values = chartvalues.slice(0,400)
     console.log(values)
-    let year = []
-    let temp = []
+    let date = []
+    let power = []
     values.forEach(elt =>{
-         year.push(elt.Year)
-         temp.push(elt.Glob)
-     })
-    console.log(`Year data(chartdata): ${year}`)
-    console.log(`Temp data(chartdata): ${temp}`)
+          date.push(elt.Date)
+          power.push(elt.Global_active_power)
+    })
+    console.log(`Date data(chartdata): ${date}`)
+    console.log(`Power data(chartdata): ${power}`)
     
     
     return(
         <div>
-            <p>Chart of the table (child of table)</p>
+            <p>Chart data to compare between the Date and Global Active Power</p>
             <Line data={
                 {
-                    labels: year,
+                    labels: date,
                     datasets: [{
-                        label: 'Global temp',
-                        data: temp,
+                        label: 'Global Active Power',
+                        data: power,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',

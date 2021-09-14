@@ -14,7 +14,7 @@ app.get('/', (req,res) => {
 // api for data transfer 
 app.get('/data', (req,res) => {
     // query to select data and limit to fetch first 200 records to reduce network load
-    let sqlquery = 'SELECT * FROM epower LIMIT 0, 200' 
+    let sqlquery = 'SELECT * FROM epower LIMIT 0, 500' 
     connection.query(sqlquery, (error, results) => {
         if(error) throw error
         res.send(results)
