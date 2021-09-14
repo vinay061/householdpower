@@ -5,6 +5,9 @@ import { Table } from 'react-bootstrap'
 import Tablechart from './Tablechart'
 import Chartdata from './Chartdata'
 
+
+
+// this function displays the data received from the database in a table format
 export default function Tabledata() {
 
     const [tableData, setTableData] = useState([])
@@ -22,11 +25,21 @@ export default function Tabledata() {
                    })
     }
 
-    //console.log(tableData)
     return (
         <div>
+            {/*Data received from database is passed to the chart component through tabledata variable*/}
+            <Tablechart data={tableData}/> 
+            <br></br>
+            <br></br>
+            <br></br>
+            {/*Data received from database is passed to the chart component through tabledata variable*/}
+            <Chartdata data={tableData}/>
+            <br></br>
+            <br></br>
+            <br></br> 
             <p>Data displayed in table format</p>
-            <Table className="striped bordered hover variant=dark">
+            {/* Data recieved from the database is displayed in the table as below*/}
+            <Table className="striped bordered hover variant=light">
                 <thead>
                     <tr>
                         <th>Serial Number</th>
@@ -46,7 +59,7 @@ export default function Tabledata() {
                             tableData.map((value,index) =>{
                                 return(
                                     <tr key={index}>
-                                        <td>{index}</td>
+                                        <td>{index+1}</td>
                                         <td>{value.Date}</td>
                                         <td>{value.Time}</td>
                                         <td>{value.Global_active_power}</td>
@@ -62,8 +75,6 @@ export default function Tabledata() {
                         }
                     </tbody>
             </Table>
-            <Tablechart data={tableData}/>
-            <Chartdata data={tableData}/> 
-        </div>
+         </div>
     )
 }

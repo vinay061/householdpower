@@ -1,18 +1,18 @@
 import React from "react";
 import { Line } from 'react-chartjs-2'
 
+//This function displays the chart between the date and Global active power
 export default function Chartdata(props){
 
-    console.log(`In the chartdata child section: ${props}`)
+    //assign the data received from Tabledata to chartValues
     const chartvalues = props.data
-    console.log(chartvalues)
-    const values = chartvalues.slice(0,400)
-    console.log(values)
+    //limiting the values using slice. Can be changed
+    const values = chartvalues.slice(0,3000)
     let date = []
     let power = []
     values.forEach(elt =>{
-          date.push(elt.Date)
-          power.push(elt.Global_active_power)
+          date.push(elt.Date)   // array to maintain x axis values
+          power.push(elt.Global_active_power) // array to maintain y axis values
     })
     console.log(`Date data(chartdata): ${date}`)
     console.log(`Power data(chartdata): ${power}`)

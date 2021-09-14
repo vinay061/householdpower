@@ -1,12 +1,13 @@
 import React from "react";
 import { Line } from 'react-chartjs-2'
 
+//This function displays the chart between the time and voltage
 export default function Tablechart(props){
 
-    //assign the data received from Tabledata to a chartValues
+    //assign the data received from Tabledata to chartValues
     const chartvalues = props.data
     //limiting the values using slice. Can be changed
-    const values = chartvalues.slice(0,200)
+    const values = chartvalues.slice(0,1000)
     let time = []
     let voltage = []
     values.forEach(elt =>{
