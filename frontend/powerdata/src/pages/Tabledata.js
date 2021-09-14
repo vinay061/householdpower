@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Table } from 'react-bootstrap'
+import Tablechart from './Tablechart'
 
 export default function Tabledata() {
 
@@ -47,6 +48,7 @@ export default function Tabledata() {
                         }
                     </tbody>
             </Table>
+            <Tablechart data={tableData}/>
         </div>
     )
 }
