@@ -1,48 +1,21 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useContext } from 'react'
 import { Table } from 'react-bootstrap'
-import Tablechart from './Tablechart'
-import Chartdata from './Chartdata'
+import { DataContext } from '../App'
 
 
 
-// this function displays the data received from the database in a table format
-export default function Tabledata() {
+export default function Drafttable() {
 
-    const [tableData, setTableData] = useState([])
-
-    useEffect(() =>{
-        getTableData()
-    },[])
-
-    //function to get the data from the url and assign to the state variable setTableData
-    async function getTableData(){
-        await axios.get("http://localhost:5000/data")
-                   .then(res => {
-                       setTableData(res.data)
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
-    }
+    const powerData = useContext(DataContext)
+    
 
     return (
         <div>
-            {/*Data received from database is passed to the chart component through tabledata variable*/}
-            <Tablechart data={tableData}/> 
-            <br></br>
-            <br></br>
-            <br></br>
-            {/*Data received from database is passed to the chart component through tabledata variable*/}
-            <Chartdata data={tableData}/>
-            <br></br>
-            <br></br>
-            <br></br> 
+            <h1>Table Data</h1>
             <p>Data displayed in table format</p>
-            {/* Data recieved from the database is displayed in the table as below*/}
             <Table className="striped bordered hover variant=light">
-                <thead>
+            <thead>
                     <tr>
                         <th>Serial Number</th>
                         <th>Date</th>
@@ -56,9 +29,9 @@ export default function Tabledata() {
                         <th>Sub Metering 3</th>
                     </tr>
                 </thead>
-                    <tbody className="hover">
+                <tbody>
                         {
-                            tableData.map((value,index) =>{
+                            powerData.map((value,index) =>{
                                 return(
                                     <tr key={index}>
                                         <td>{index+1}</td>
@@ -77,6 +50,6 @@ export default function Tabledata() {
                         }
                     </tbody>
             </Table>
-         </div>
+        </div>
     )
 }

@@ -37,7 +37,11 @@
   }
 }
 
-.home,
-.about {
+.list {
   list-style: none;
+}
+
+.linklist {
+  color: white;
+  text-decoration: none;
 }

@@ -1,30 +1,31 @@
-import React from "react";
+import React from 'react'
 import { Line } from 'react-chartjs-2'
+import { useContext } from 'react'
+import { DataContext } from '../App'
 
-//This function displays the chart between the date and Global active power
-export default function Chartdata(props){
+export default function Chartone() {
+ 
+const powerData = useContext(DataContext)
 
-    //assign the data received from Tabledata to chartValues
-    const chartvalues = props.data
-    //limiting the values using slice. Can be changed
-    const values = chartvalues.slice(0,1000)
-    let date = []
-    let power = []
-    values.forEach(elt =>{
-          date.push(elt.Date)   // array to maintain x axis values
-          power.push(elt.Global_active_power) // array to maintain y axis values
-    })
-    
-    
-    return(
+//limiting the values using slice. Can be changed
+const values = powerData.slice(0,100)
+let time = []
+let voltage = []
+values.forEach(elt =>{
+     time.push(elt.Time)   // array to maintain x axis values
+     voltage.push(elt.Voltage) // array to maintain y axis values
+})
+
+    return (
         <div>
-            <p>Chart data to compare between the Date and Global Active Power</p>
+            <h1>Chart One</h1>
+            <p>Comparing the data between Time and Voltage consumption</p>
             <Line data={
                 {
-                    labels: date,
+                    labels: time,
                     datasets: [{
-                        label: 'Global Active Power',
-                        data: power,
+                        label: 'Voltage',
+                        data: voltage,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -44,7 +45,9 @@ export default function Chartdata(props){
                         borderWidth: 1
                     }]
                 }
-            }/> 
+            }
+
+            />
         </div>
     )
 }
