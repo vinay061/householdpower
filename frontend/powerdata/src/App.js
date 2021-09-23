@@ -7,6 +7,7 @@ import axios from 'axios';
 import Drafttable from './pages/Drafttable';
 import Chartone from './pages/Chartone';
 import Charttwo from './pages/Charttwo';
+import Radarchart from './pages/Radarchart';
 import Displayall from './pages/Displayall';
 import Home from './pages/Home';
 import { Navbar } from 'react-bootstrap';
@@ -41,11 +42,11 @@ function App() {
               <Link to='/drafttable' className="linklist">Table</Link>
               <Link to='/chartone' className="linklist">Chart One</Link>
               <Link to='/charttwo' className="linklist">Chart Two</Link>
+              <Link to='/radarchart' className="linklist">Radar Chart</Link>
               <Link to='/displayall' className="linklist">Display All</Link>
             </Container>
       </Navbar>
-      
-      
+          
       <h1>Data For Power Consumption</h1>  
         <ul>
           <li className="list"><Link to='/drafttable'>Table</Link></li>
@@ -68,6 +69,11 @@ function App() {
           <Route path='/charttwo'>
             <DataContext.Provider value={powerData}>
               <Charttwo/>
+            </DataContext.Provider>
+          </Route>
+          <Route path='/radarchart'>
+            <DataContext.Provider value={powerData}>
+              <Radarchart/>
             </DataContext.Provider>
           </Route>
           <Route path='/displayall'>
